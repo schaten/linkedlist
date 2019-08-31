@@ -21,8 +21,8 @@ assert "list" in linkfilecontents
 targets = linkfilecontents['list']
 
 def setup_routing(app):
-    bottle.route("/{}".format(CONFIG['prefix']), ["GET"], forward)
-    bottle.route("/{}/<id:int>".format(CONFIG['prefix']), ["GET"], forward)
+    app.route("/{}".format(CONFIG['prefix']), ["GET"], forward)
+    app.route("/{}/<id:int>".format(CONFIG['prefix']), ["GET"], forward)
 
 def forward(id=None):
     if id is None:
