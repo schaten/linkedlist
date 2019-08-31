@@ -5,7 +5,7 @@ import os
 # Config
 CONFIG = {
         "linkfile": "links.json",
-        "prefix": "q"
+        "server": "https://noerdcampus.de/avatar/q"
         }
 
 
@@ -22,6 +22,9 @@ try:
 except FileExistsError as e:
     pass
 
+
+img = qrcode.make("{}".format(CONFIG['server']))
+img.save("qr-codes/random.png", "png")
 for i, link in enumerate(targets):
-    img = qrcode.make(link)
+    img = qrcode.make("{}/{}".format(CONFIG['server'], i))
     img.save("qr-codes/{}.png".format(i), "png")
